@@ -1,5 +1,7 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page import="Oauth.FBConnection"%>
+<%FBConnection fbConnection = new FBConnection(); %>
 <!DOCTYPE html>
 <html>
     <head>

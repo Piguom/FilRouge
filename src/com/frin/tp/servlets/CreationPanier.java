@@ -61,14 +61,12 @@ public class CreationPanier extends HttpServlet {
         panier.setClient( client );
         panier.setNom( produit.getNom() );
         panier.setConstructeur( produit.getConstructeur() );
-        panier.setQuantite( 1 );
+        panier.setQuantite( produit.getQuantite() - produit.getQuantite() + 1 );
         panier.setImage( produit.getImage() );
 
         panierDao.creer( panier );
 
-        System.out.println( "Client panier ===> " + client.getId() );
         List<Panier> paniers = panierDao.listerViaClient( client.getId() );
-        System.out.println( "Retour de fonction DAO lister en fonction du client ===> " + paniers );
         session.setAttribute( SESSION_PRODUITS, paniers );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );

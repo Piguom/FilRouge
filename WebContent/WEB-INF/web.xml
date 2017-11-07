@@ -176,6 +176,10 @@
 		<servlet-name>SuppressionPanier</servlet-name>
 		<servlet-class>com.frin.tp.servlets.SuppressionPanier</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>UsersServlet</servlet-name>
+		<servlet-class>Oauth.UsersServlet</servlet-class>
+	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>CreationClient</servlet-name>
@@ -260,5 +264,9 @@
 	<servlet-mapping>
 		<servlet-name>SuppressionPanier</servlet-name>
 		<url-pattern>/suppressionPanier</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UsersServlet</servlet-name>
+		<url-pattern>/usersServlet</url-pattern>
 	</servlet-mapping>
 </web-app>
