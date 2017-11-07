@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app 
+  xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+  version="3.0"> 
+  
+  <session-config> 
+		<session-timeout>0</session-timeout>
+	</session-config>
+	<filter>
+        <filter-name>Set Character Encoding</filter-name>
+        <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>ignore</param-name>
+            <param-value>false</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>Set Character Encoding</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <filter>
+        <filter-name>PrechargementFilter</filter-name>
+        <filter-class>com.frin.tp.filters.PrechargementFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>PrechargementFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <listener>
+		<listener-class>com.frin.tp.config.InitialisationDaoFactory</listener-class>
+    </listener>
+    
+	<servlet>
+		<servlet-name>CreationClient</servlet-name>
+		<servlet-class>com.frin.tp.servlets.CreationClient</servlet-class>
+		<init-param>
+			<param-name>chemin</param-name> 
+			<param-value>C:\Users\INEOX-PC\Desktop\Upload-JEE\</param-value> 
+		</init-param>
+		<multipart-config>
+			<location>C:\Users\INEOX-PC\Desktop\Upload-JEE\</location>
+			<max-file-size>52428800</max-file-size> <!-- 50 Mo -->
+			<max-request-size>52428800</max-request-size> <!--50Mo -->
+			<file-size-threshold>52428800</file-size-threshold> <!-- 1 Mo -->
+		</multipart-config>
+	</servlet>
+	<servlet>
+		<servlet-name>ListeClients</servlet-name>
+		<servlet-class>com.frin.tp.servlets.ListeClients</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>SuppressionClient</servlet-name>
+		<servlet-class>com.frin.tp.servlets.SuppressionClient</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CreationCommande</servlet-name>
+		<servlet-class>com.frin.tp.servlets.CreationCommande</servlet-class>
+		<init-param>
+			<param-name>chemin</param-name> 
+			<param-value>C:\Users\INEOX-PC\Desktop\Upload-JEE\</param-value> 
+		</init-param>
+		<multipart-config>
+			<location>C:\Users\INEOX-PC\Desktop\Upload-JEE\</location>
+			<max-file-size>52428800</max-file-size> <!-- 2 Mo -->
+			<max-request-size>52428800</max-request-size> <!-- 5 x 2Mo -->
+			<file-size-threshold>52428800</file-size-threshold> <!-- 1 Mo -->
+		</multipart-config>
+	</servlet>
+	<servlet>
+		<servlet-name>ListeCommandes</servlet-name>
+		<servlet-class>com.frin.tp.servlets.ListeCommandes</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ListeToutesCommandes</servlet-name>
+		<servlet-class>com.frin.tp.servlets.ListeToutesCommandes</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>SuppressionCommande</servlet-name>
+		<servlet-class>com.frin.tp.servlets.SuppressionCommande</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Image</servlet-name>
+		<servlet-class>com.frin.tp.servlets.Image</servlet-class>
+		<init-param>
+			<param-name>chemin</param-name> 
+			<param-value>C:\Users\INEOX-PC\Desktop\Upload-JEE\</param-value> 
+		</init-param>
+	</servlet>
+	<servlet>
+		<servlet-name>Connexion</servlet-name>
+		<servlet-class>com.frin.tp.servlets.Connexion</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ConnexionAdmin</servlet-name>
+		<servlet-class>com.frin.tp.servlets.ConnexionAdmin</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Deconnexion</servlet-name>
+		<servlet-class>com.frin.tp.servlets.Deconnexion</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Restriction</servlet-name>
+		<servlet-class>com.frin.tp.servlets.Restriction</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CreationAdmin</servlet-name>
+		<servlet-class>com.frin.tp.servlets.CreationAdmin</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>SuppressionAdmin</servlet-name>
+		<servlet-class>com.frin.tp.servlets.SuppressionAdmin</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ModificationClient</servlet-name>
+		<servlet-class>com.frin.tp.servlets.ModificationClient</servlet-class>
+		<init-param>
+			<param-name>chemin</param-name> 
+			<param-value>C:\Users\INEOX-PC\Desktop\Upload-JEE\</param-value> 
+		</init-param>
+		<multipart-config>
+			<location>C:\Users\INEOX-PC\Desktop\Upload-JEE\</location>
+			<max-file-size>52428800</max-file-size> <!-- 2 Mo -->
+			<max-request-size>52428800</max-request-size> <!-- 5 x 2Mo -->
+			<file-size-threshold>52428800</file-size-threshold> <!-- 1 Mo -->
+		</multipart-config>
+	</servlet>
+	<servlet>
+		<servlet-name>Produits</servlet-name>
+		<servlet-class>com.frin.tp.servlets.AfficherProduits</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CreationProduit</servlet-name>
+		<servlet-class>com.frin.tp.servlets.CreationProduit</servlet-class>
+		<init-param>
+			<param-name>chemin</param-name> 
+			<param-value>C:\Users\INEOX-PC\Desktop\Upload-JEE\</param-value> 
+		</init-param>
+		<multipart-config>
+			<location>C:\Users\INEOX-PC\Desktop\Upload-JEE\</location>
+			<max-file-size>52428800</max-file-size> <!-- 2 Mo -->
+			<max-request-size>52428800</max-request-size> <!-- 5 x 2Mo -->
+			<file-size-threshold>52428800</file-size-threshold> <!-- 1 Mo -->
+		</multipart-config>
+	</servlet>
+	<servlet>
+		<servlet-name>ListeProduits</servlet-name>
+		<servlet-class>com.frin.tp.servlets.ListeProduits</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CreationPanier</servlet-name>
+		<servlet-class>com.frin.tp.servlets.CreationPanier</servlet-class>
+		<init-param>
+			<param-name>chemin</param-name> 
+			<param-value>C:\Users\INEOX-PC\Desktop\Upload-JEE\</param-value> 
+		</init-param>
+		<multipart-config>
+			<location>C:\Users\INEOX-PC\Desktop\Upload-JEE\</location>
+			<max-file-size>52428800</max-file-size> <!-- 2 Mo -->
+			<max-request-size>52428800</max-request-size> <!-- 5 x 2Mo -->
+			<file-size-threshold>52428800</file-size-threshold> <!-- 1 Mo -->
+		</multipart-config>
+	</servlet>
+	<servlet>
+		<servlet-name>ListePanier</servlet-name>
+		<servlet-class>com.frin.tp.servlets.ListePanier</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>SuppressionPanier</servlet-name>
+		<servlet-class>com.frin.tp.servlets.SuppressionPanier</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>CreationClient</servlet-name>
+		<url-pattern>/creationClient</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ListeClients</servlet-name>
+		<url-pattern>/listeClients</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SuppressionClient</servlet-name>
+		<url-pattern>/suppressionClient</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CreationCommande</servlet-name>
+		<url-pattern>/creationCommande</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ListeCommandes</servlet-name>
+		<url-pattern>/listeCommandes</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ListeToutesCommandes</servlet-name>
+		<url-pattern>/listeToutesCommandes</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SuppressionCommande</servlet-name>
+		<url-pattern>/suppressionCommande</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Image</servlet-name>
+		<url-pattern>/images/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Connexion</servlet-name>
+		<url-pattern>/connexion</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ConnexionAdmin</servlet-name>
+		<url-pattern>/connexionAdmin</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Deconnexion</servlet-name>
+		<url-pattern>/deconnexion</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Restriction</servlet-name>
+		<url-pattern>/restriction</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CreationAdmin</servlet-name>
+		<url-pattern>/creationAdmin</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SuppressionAdmin</servlet-name>
+		<url-pattern>/suppressionAdmin</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ModificationClient</servlet-name>
+		<url-pattern>/modificationClient</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Produits</servlet-name>
+		<url-pattern>/afficherProduits</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CreationProduit</servlet-name>
+		<url-pattern>/creationProduit</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ListeProduits</servlet-name>
+		<url-pattern>/listeProduit</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CreationPanier</servlet-name>
+		<url-pattern>/creationPanier</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ListePanier</servlet-name>
+		<url-pattern>/listePanier</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SuppressionPanier</servlet-name>
+		<url-pattern>/suppressionPanier</url-pattern>
+	</servlet-mapping>
+</web-app>
